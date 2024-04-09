@@ -1,0 +1,10 @@
+rootProject.name = 'LabMPP'
+include 'CurseClient'
+include 'CurseModel'
+include 'CurseNetworkin'
+include 'CursaNetworking'
+include 'CursaPersistence'
+include 'CursaServer'
+include 'CurseServices'
+include 'CursaServer'
+

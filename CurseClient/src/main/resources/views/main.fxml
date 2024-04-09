@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+
+    <!-- Elemente pentru căutare -->
+    <VBox layoutX="10" layoutY="10" spacing="10">
+        <Label text="Destinatie:" />
+        <TextField fx:id="destinationField" />
+        <Label text="Data plecarii:" />
+        <DatePicker fx:id="departureDate" />
+        <Label text="Ora plecarii:" />
+        <TextField fx:id="departureTime" />
+        <Button onAction="#search" text="Cauta" />
+    </VBox>
+
+    <VBox layoutX="350" layoutY="10" spacing="10">
+        <Label text="Nume client:" />
+        <TextField fx:id="nameField" />
+        <Label text="Numar locuri:" />
+        <TextField fx:id="numarLocuri" />
+        <Button fx:id="addButton" onAction="#add" text="Adauga rezervare" />
+        <Button fx:id="logoutButton" onAction="#loggoutButton" text="Logout" />
+    </VBox>
+
+    <!-- Tabelul pentru rezultatele căutării -->
+    <TableView fx:id="resultTable" layoutX="10" layoutY="250">
+        <columns>
+            <TableColumn fx:id="numarLoc" prefWidth="100" text="Numar Loc">
+                <cellValueFactory>
+                    <PropertyValueFactory property="numarLoc" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="numeClient" prefWidth="200" text="Nume Client">
+                <cellValueFactory>
+                    <PropertyValueFactory property="numeClient" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <!-- Tabelul pentru curse -->
+    <TableView fx:id="cursaTable" layoutX="350" layoutY="250" prefWidth="450">
+        <columns>
+            <TableColumn fx:id="destinatie" prefWidth="150" text="Destinatie">
+                <cellValueFactory>
+                    <PropertyValueFactory property="destinatie" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="data" prefWidth="150" text="Data">
+                <cellValueFactory>
+                    <PropertyValueFactory property="data" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="locuriLibere" prefWidth="150" text="Locuri Libere">
+                <cellValueFactory>
+                    <PropertyValueFactory property="locuriLibere" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+</AnchorPane>
