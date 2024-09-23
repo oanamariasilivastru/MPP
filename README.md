@@ -17,6 +17,12 @@ The MPP project is a comprehensive client-server system designed to manage and p
 - **CurseModel**: Data models representing transportation-related entities.
 - **RestServices**: REST API endpoints exposing various system functionalities.
 
+## Design Patterns
+- **MVC (Model-View-Controller)**: Applied in the frontend to separate concerns, with React handling the view, and the model representing transportation data.
+- **Singleton**: Used in the CursaServer to ensure a single instance of the server is responsible for handling requests.
+- **Factory Pattern**: Implemented in CursaPersistence to create instances of data access objects based on the type of data being processed.
+- **Observer Pattern**: Utilized for real-time updates in the frontend when data changes occur on the server.
+  
 ## Technologies
 
 ### Backend
