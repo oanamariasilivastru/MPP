@@ -1,6 +1,7 @@
 import repository.RepoCursa;
 import repository.RepoRezervare;
 import repository.RepoUser;
+import repository.RepoUserHibernate;
 import server.Service;
 import service.IService;
 import utils.AbstractServer;
@@ -23,7 +24,8 @@ public class StartObjectServer {
             System.err.println("Cannot find server.properties " + e);
             return;
         }
-        RepoUser repoUser = new RepoUser(serverProps);
+        //RepoUser repoUser = new RepoUser(serverProps);
+        RepoUserHibernate repoUser = new RepoUserHibernate();
         RepoCursa repoCursa = new RepoCursa(serverProps);
         RepoRezervare repoRezervare = new RepoRezervare(serverProps);
         IService service = new Service(repoCursa, repoRezervare, repoUser);

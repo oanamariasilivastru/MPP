@@ -1,4 +1,6 @@
 package repository;
+import jdk.jfr.Percentage;
+import model.Entity;
 import model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +23,7 @@ public class RepoUser implements UserRepository {
     }
 
     @Override
-    public void save(User user) {
+    public User save(User user) {
         logger.traceEntry("saving user {}", user);
         Connection con = jdbcUtils.getConnection();
         try (PreparedStatement preStmt = con.prepareStatement("INSERT INTO \"user\" (username, password) VALUES (?, ?)")) {
@@ -30,14 +32,17 @@ public class RepoUser implements UserRepository {
 
             int result = preStmt.executeUpdate();
             logger.trace("Saved {} rows", result);
+            return user;
         } catch (SQLException ex) {
             logger.error("Error saving user {}", user, ex);
             System.out.println("Error DB " + ex);
+
         }
         logger.traceExit();
+        return null;
     }
 
-    @Override
+
     public User findOne(Long idUser) {
         logger.traceEntry("finding user with id {}", idUser);
         Connection connection = jdbcUtils.getConnection();
@@ -63,7 +68,7 @@ public class RepoUser implements UserRepository {
         return null;
     }
 
-    @Override
+
     public Iterable<User> findAll() {
         logger.traceEntry("find all users");
         Connection connection = jdbcUtils.getConnection();
@@ -88,6 +93,7 @@ public class RepoUser implements UserRepository {
         logger.traceExit(userList);
         return userList;
     }
+
 
     @Override
     public void delete(Long idUser) {

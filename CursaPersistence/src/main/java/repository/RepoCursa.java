@@ -3,22 +3,29 @@ package repository;
 import model.Cursa;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+@Component
+@Repository
 public class RepoCursa implements CursaRepository {
     private JdbcUtils jdbcUtils;
     private static final Logger logger = LogManager.getLogger(RepoCursa.class);
 
+    @Autowired
     public RepoCursa(Properties props) {
         logger.info("Initializing RepoCursa with properties: {}", props);
         jdbcUtils = new JdbcUtils(props);
     }
     @Override
-    public void save(Cursa entity) {
+    public Cursa save(Cursa entity) {
         logger.traceEntry("saving cursa {}", entity);
         Connection con = jdbcUtils.getConnection();
         try (PreparedStatement preStmt = con.prepareStatement("INSERT INTO cursa (destinatie, data) VALUES (?, ?)")) {
@@ -28,11 +35,20 @@ public class RepoCursa implements CursaRepository {
 
             int result = preStmt.executeUpdate();
             logger.trace("Saved {} rows", result);
+            System.out.println("Saved {} rows" + result);
+            Iterable<Cursa> all = findAll();
+            for (Cursa cursa : all) {
+                entity = cursa;
+            }
+            System.out.println(entity.getId());
+            return entity;
+
         } catch (SQLException ex) {
             logger.error("Error saving cursa {}", entity, ex);
             System.out.println("Error DB " + ex);
         }
         logger.traceExit();
+        return null;
     }
     @Override
     public Cursa findOne(Long idCursa) {

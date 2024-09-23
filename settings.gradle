@@ -7,4 +7,6 @@ include 'CursaPersistence'
 include 'CursaServer'
 include 'CurseServices'
 include 'CursaServer'
+include 'RestServices'
+include 'RestServices'
 

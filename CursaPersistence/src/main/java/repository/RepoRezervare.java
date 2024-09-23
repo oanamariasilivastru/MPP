@@ -22,7 +22,7 @@ public class RepoRezervare implements RezervareRepository {
     }
 
     @Override
-    public void save(Rezervare entity) {
+    public Rezervare save(Rezervare entity) {
         logger.traceEntry("saving rezervare {}", entity);
         Connection con = jdbcUtils.getConnection();
         try (PreparedStatement preStmt = con.prepareStatement("INSERT INTO rezervare (\"idCursa\", \"numeClient\", \"nrLocuri\") VALUES (?, ?, ?)"))  {
@@ -32,11 +32,13 @@ public class RepoRezervare implements RezervareRepository {
 
             int result = preStmt.executeUpdate();
             logger.trace("Saved {} rows", result);
+            return entity;
         } catch (SQLException ex) {
             logger.error("Error saving rezervare {}", entity, ex);
             System.out.println("Error DB " + ex);
         }
         logger.traceExit();
+        return null;
     }
 
     @Override

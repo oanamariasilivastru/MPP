@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/CurseModel" />
             <option value="$PROJECT_DIR$/CurseNetworkin" />
             <option value="$PROJECT_DIR$/CurseServices" />
+            <option value="$PROJECT_DIR$/RestServices" />
           </set>
         </option>
       </GradleProjectSettings>

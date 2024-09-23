@@ -1,0 +1,74 @@
+syntax = "proto3";
+package proto;
+
+option java_package = "protobufprotocol";
+option java_outer_classname = "Protobufs";
+
+message User {
+  int64 id = 1;
+  string username = 2;
+  string password = 3;
+}
+
+
+import "google/protobuf/timestamp.proto";
+
+message Cursa {
+  int64 id = 1;
+  string destinatie = 2;
+  google.protobuf.Timestamp data = 3;
+}
+
+
+message Rezervare {
+  int64 id = 1;
+  Cursa cursa = 2;
+  string nume_client = 3;
+  int32 nr_locuri = 4;
+}
+
+message Request {
+  enum RequestType {
+    LOGIN = 0;
+    LOGOUT = 1;
+    GET_LOCURI_LIBERE = 2;
+    GET_ALL_CURSE = 3;
+    GET_CURSA = 4;
+    GET_LOCURI_MULTIPLE = 5;
+    ADD = 6;
+    NEW_REZ = 7;
+  }
+
+  RequestType type = 1;
+  oneof payload {
+    User user = 2;
+    Cursa cursa = 3;
+    int64 id = 4;
+    Rezervare rezervare = 5;
+
+  }
+}
+
+message Response {
+  enum ResponseType{
+    OK = 0;
+    ERROR = 1;
+    GET_LOGGED_FRIENDS = 2;
+    UPDATE = 3;
+    GET_ALL_CURSE = 4;
+    NEW_MESSAGE = 5;
+    FRIEND_LOGGED_IN = 6;
+    FRIEND_LOGGED_OUT = 7;
+    GET_LOCURI_LIBERE = 8;
+  }
+
+  ResponseType type = 1;
+  User user = 2;
+  Cursa cursa = 3;
+  int64 id = 4;
+  Rezervare rezervare = 5;
+  string error = 6;
+  repeated string clientNames = 7;
+  repeated Cursa listaCurse = 8;
+  repeated int32 nrLocuri = 9;
+}

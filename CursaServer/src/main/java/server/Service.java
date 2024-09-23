@@ -3,10 +3,7 @@ package server;
 import model.Cursa;
 import model.Rezervare;
 import model.User;
-import repository.CursaRepository;
-import repository.RepoCursa;
-import repository.RepoRezervare;
-import repository.RepoUser;
+import repository.*;
 import service.IObserver;
 import service.IService;
 import service.ServerException;
@@ -22,11 +19,12 @@ import java.util.concurrent.Executors;
 public class Service implements IService {
     private RepoCursa repoCursa;
     private RepoRezervare repoRezervare;
-    private RepoUser repoUser;
+    //private RepoUser repoUser;
+    private RepoUserHibernate repoUser;
 
     private Map<Long, IObserver> loggedClients;
 
-    public Service(RepoCursa repoCursa, RepoRezervare repoRezervare, RepoUser repoUser) {
+    public Service(RepoCursa repoCursa, RepoRezervare repoRezervare, RepoUserHibernate repoUser) {
         this.repoCursa = repoCursa;
         this.repoRezervare = repoRezervare;
         this.repoUser = repoUser;

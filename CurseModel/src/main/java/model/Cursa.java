@@ -13,6 +13,7 @@ public class Cursa extends Entity<Long> implements Serializable {
         this.data = data;
     }
 
+    public Cursa(){};
     public String getDestinatie() {
         return destinatie;
     }

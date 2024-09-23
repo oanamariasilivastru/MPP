@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/MPPCurse</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="curse.db" uuid="e342791c-fe42-4fa0-b3ff-e2e91dcee7de">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Oana\Desktop\LabMPP\curse.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

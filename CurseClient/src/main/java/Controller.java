@@ -128,11 +128,14 @@ public class Controller implements Initializable, IObserver {
                     MessageAlert.showErrorMessage(null, "Nu exista curse disponibile pentru destinatia si ora selectata.");
                     return;
                 }
-
-                clienti = service.getNumeClientiCuRezervariMultiple(cursa.getId());
-                System.out.println(clienti);
-                System.out.println(clienti.size());
-                seeSeats();
+                System.out.println("Cursa in controller" + cursa);
+                //cursa.setId(76l);
+                if(cursa.getId() != null) {
+                    clienti = service.getNumeClientiCuRezervariMultiple(cursa.getId());
+                    System.out.println(clienti);
+                    System.out.println(clienti.size());
+                    seeSeats();
+                }
             }catch(ServerException ex){
                 ex.getMessage();
             }

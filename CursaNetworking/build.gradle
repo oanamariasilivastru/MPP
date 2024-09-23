@@ -17,6 +17,23 @@ dependencies {
     implementation project(path: ':CurseModel')
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.11.4'
+
+    // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
+    implementation 'com.google.protobuf:protobuf-java:4.26.1'
+
+    // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+    runtimeOnly 'org.xerial:sqlite-jdbc:3.45.3.0'
+
+
+    implementation 'org.slf4j:slf4j-api:1.7.32' // SLF4J API
+    implementation 'ch.qos.logback:logback-classic:1.2.3' // Logback implementare
+
+
+
+
 }
 
 test {

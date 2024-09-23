@@ -6,9 +6,7 @@ import service.IService;
 import service.ServerException;
 import utils.*;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.security.Provider;
 import java.time.LocalDateTime;
@@ -126,7 +124,7 @@ public class ServicesRpcProxy implements IService {
         try {
             connection=new Socket(host,port);
             output=new ObjectOutputStream(connection.getOutputStream());
-            output.flush();
+            //output.flush();
             input=new ObjectInputStream(connection.getInputStream());
             finished=false;
             startReader();
